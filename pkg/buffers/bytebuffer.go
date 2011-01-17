@@ -6,15 +6,15 @@ type ByteBuffer struct {
 	arr []byte
 }
 
-func NewByteBuffer() (*ByteBuffer) {
+func NewByteBuffer() *ByteBuffer {
 	var b *ByteBuffer = new(ByteBuffer)
 	b.arr = make([]byte, 0, 2)
 	return b
 }
 
 func (b *ByteBuffer) Write(p []byte) (n int, err os.Error) {
-  b.arr = append(b.arr, p...)
-  return len(p), nil
+	b.arr = append(b.arr, p...)
+	return len(p), nil
 }
 
 func (b *ByteBuffer) WriteString(s string) (n int, err os.Error) {
