@@ -1,0 +1,8 @@
+*.o
+*.a
+*.[568vq]
+[568vq].out
+_testmain.go
+
+cmd/buffer/buffer
+cmd/hello/hello
