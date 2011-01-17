@@ -1,5 +1,5 @@
 all:
-	make -C pkg/buffers install
+	make -C pkg/buffers test install
 	make -C cmd/hello
 	make -C cmd/buffer
 
