@@ -1,12 +1,15 @@
 ## Example project for Go
 
-This is a very simple example project for the Go programming language that
-includes two executable commands, a single package (library in Go) and a
-top-level makefile that helps tie things together a bit. One of the commands is
-standalone, while the other imports from the package that is being built.
+This project consists of a fairly simple example setup for writing programs
+using the Go programming language. It can produce two packages complete with
+tests, and two commands, one of which depends on the package in the repository.
 
-The package is installed in your $GOROOT using the 'make install' target.
+The `go` tool takes care of building dependencies for us. To start, you'll need
+to set the `GOPATH` environment variable, which can be done by running
+`envsetup.sh` like so:
 
-If you do not have the $GOROOT environment variable set, then you should ensure
-you use the `gomake` program instead of the standard `make` program, as it
-ensures the correct variables are set.
+     . envsetup.sh
+
+The two commands can be built using `go install hello` and `go install buffer`,
+or you can install them both using `go install hello buffer`. To run the tests
+for the packages, you can run `go test jnwhiteh.net/buffers` and `go test jnwhiteh.net/merge`.

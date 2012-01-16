@@ -1,7 +1,5 @@
 package buffers
 
-import "os"
-
 type ByteBuffer struct {
 	arr []byte
 }
@@ -12,12 +10,12 @@ func NewByteBuffer() *ByteBuffer {
 	return b
 }
 
-func (b *ByteBuffer) Write(p []byte) (n int, err os.Error) {
+func (b *ByteBuffer) Write(p []byte) (n int, err error) {
 	b.arr = append(b.arr, p...)
 	return len(p), nil
 }
 
-func (b *ByteBuffer) WriteString(s string) (n int, err os.Error) {
+func (b *ByteBuffer) WriteString(s string) (n int, err error) {
 	conv := []byte(s)
 	b.arr = append(b.arr, conv...)
 	return len(conv), nil

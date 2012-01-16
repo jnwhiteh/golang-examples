@@ -1,6 +1,6 @@
 package merge
 
-import "rand"
+import "math/rand"
 import "sort"
 import "testing"
 
@@ -42,19 +42,21 @@ func TestMerge(T *testing.T) {
 func TestRandoms(T *testing.T) {
 	// Run a sort on 100 random integers
 	for i:= 0; i < 100; i++ {
-		length := rand.Intn(100)
-		data := make([]int, length)
-		for i := 0; i < length; i++ {
-			data[i] = rand.Int()
+		length := 100
+
+		var data []int
+		for j := 0; j < length; j++ {
+			data = append(data, rand.Intn(100))
 		}
 
 		rchan := make(chan []int)
 		go Sort(data, rchan)
 
+		result := <-rchan
+
 		check := make([]int, length)
 		copy(check, data)
-		sort.SortInts(check)
-		result := <-rchan
+		sort.Ints(check)
 
 		if !Equal(result, check) {
 			T.Errorf("When testing %v: expected %v, got %v", data, check, result)
